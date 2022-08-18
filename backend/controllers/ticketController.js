@@ -33,7 +33,7 @@ const createTicket = asyncHandler(async (req, res) => {
     throw new Error("User not found");
   }
 
-  const ticket = await Ticket.createTicket({
+  const ticket = await Ticket.create({
     product,
     description,
     user: req.user.id,

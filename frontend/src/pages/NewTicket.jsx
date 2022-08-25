@@ -48,7 +48,7 @@ function NewTicket() {
       </section>
       <section className="form">
         <div className="form-group">
-          <lable htmlFor="name">Customer Name</lable>
+          <label htmlFor="name">Customer Name</label>
           <input type="text" className="form-control" value={name} disabled />
         </div>
         <div className="form-group">

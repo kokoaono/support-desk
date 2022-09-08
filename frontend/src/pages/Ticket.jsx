@@ -68,6 +68,13 @@ function Ticket() {
   const openModal = () => setModalIsOpen(true);
   const closeModal = () => setModalIsOpen(false);
 
+  //noteSubmit
+  const onNoteSubmit = (e) => {
+    e.preventDefault();
+    console.log("Submit");
+    closeModal();
+  };
+
   return (
     <div className="ticket-page">
       <header className="ticket-header">
@@ -107,6 +114,23 @@ function Ticket() {
         <button className="btn-close" onClick={closeModal}>
           X
         </button>
+        <form onSubmit={onNoteSubmit}>
+          <div className="form-group">
+            <textarea
+              name="noteText"
+              id="noteText"
+              className="form-control"
+              placeholder="Note Text"
+              value={noteText}
+              onChange={(e) => setNoteText(e.target.value)}
+            ></textarea>
+          </div>
+          <div className="form-group">
+            <button className="btn" type="submit">
+              Submit
+            </button>
+          </div>
+        </form>
       </Modal>
 
       {notes.map((note) => (

@@ -1,6 +1,10 @@
 import { useSelector, useDispatch } from "react-redux";
 import { getTicket, rest, closeTicket } from "../features/tickets/ticketSlice";
-import { getNotes, reset as notesReset } from "../features/notes/noteSlice";
+import {
+  getNotes,
+  createNote,
+  reset as notesReset,
+} from "../features/notes/noteSlice";
 import BackButton from "../components/BackButton";
 import Spinner from "../components/Spinner";
 import NoteItem from "../components/NoteItem";
@@ -71,7 +75,7 @@ function Ticket() {
   //noteSubmit
   const onNoteSubmit = (e) => {
     e.preventDefault();
-    console.log("Submit");
+    dispatch(createNote({ ticketId, noteText }));
     closeModal();
   };
 
@@ -105,7 +109,7 @@ function Ticket() {
       )}
 
       <Modal
-        isopen={modalIsOpen}
+        isOpen={modalIsOpen}
         onRequestClose={closeModal}
         style={customStyles}
         contentLabel="Add Note"
